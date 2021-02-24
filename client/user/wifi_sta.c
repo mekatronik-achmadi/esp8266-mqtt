@@ -37,7 +37,7 @@ LOCAL void ICACHE_FLASH_ATTR user_wifi_station_check_ip(void){
     if(wifi_status == STATION_GOT_IP && ipconfig.ip.addr !=0 ){
         if(ip_configured == 0){
             os_printf("got ip !!! \r\n");
-            os_printf("connect to mqtt broker\r\n");
+            os_printf("Connecting to MQTT Broker \r\n");
             mqttWifiConnectCb(STATION_GOT_IP);
             ip_configured = 1;
         }

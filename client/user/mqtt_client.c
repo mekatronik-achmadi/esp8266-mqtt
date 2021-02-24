@@ -52,7 +52,7 @@ void mqttWifiConnectCb(uint8_t status){
 
 void mqttClientInit(void){
     MQTT_InitConnection(&mqttClient, MQTT_BROKER, 1883, 0);
-    MQTT_InitClient(&mqttClient, "esp8266", NULL, NULL, 120, 0);
+    MQTT_InitClient(&mqttClient, "esp8266", NULL, NULL, 10, 0);
 
     MQTT_OnConnected(&mqttClient, mqttConnectedCb);
     MQTT_OnDisconnected(&mqttClient, mqttDisconnectedCb);
