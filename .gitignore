@@ -1,0 +1,4 @@
+/client/.clangd
+/client/compile_commands.json
+/client/firmware
+/client/build
