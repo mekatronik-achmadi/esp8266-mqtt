@@ -1,6 +1,7 @@
 #include "osapi.h"
 #include "ets_sys.h"
 #include "mqtt.h"
+#include "user_config.h"
 #include "user_interface.h"
 #include "mem.h"
 
@@ -50,7 +51,7 @@ void mqttWifiConnectCb(uint8_t status){
 }
 
 void mqttClientInit(void){
-    MQTT_InitConnection(&mqttClient, "192.168.50.245", 1883, 0);
+    MQTT_InitConnection(&mqttClient, MQTT_BROKER, 1883, 0);
     MQTT_InitClient(&mqttClient, "esp8266", NULL, NULL, 120, 0);
 
     MQTT_OnConnected(&mqttClient, mqttConnectedCb);

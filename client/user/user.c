@@ -11,6 +11,7 @@
 #include "drv_gpio16.h"
 #include "drv_uart.h"
 #include "wifi_sta.h"
+#include "mqtt_client.h"
 
 LOCAL os_timer_t blink_timer;
 LOCAL uint8 blink_led;
@@ -37,6 +38,7 @@ void ICACHE_FLASH_ATTR user_init(){
     uart_rx_intr_enable(UART0);
     print_info();
 
+    mqttClientInit();
     user_wifi_station_init();
     
     gpio16_output_conf();

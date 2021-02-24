@@ -9,6 +9,7 @@
 
 #include "user_config.h"
 #include "wifi_sta.h"
+#include "mqtt_client.h"
 
 /**
  * @brief Test IP routine timer
@@ -36,7 +37,9 @@ LOCAL void ICACHE_FLASH_ATTR user_wifi_station_check_ip(void){
     if(wifi_status == STATION_GOT_IP && ipconfig.ip.addr !=0 ){
         if(ip_configured == 0){
             os_printf("got ip !!! \r\n");
-           ip_configured = 1;
+            os_printf("connect to mqtt broker\r\n");
+            mqttWifiConnectCb(STATION_GOT_IP);
+            ip_configured = 1;
         }
     }
     else{
