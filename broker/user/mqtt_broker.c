@@ -8,7 +8,7 @@
 #include "mqtt/mqtt.h"
 
 LOCAL void ICACHE_FLASH_ATTR  mqttDataCB(uint32_t * args, const char *topic, uint32_t topic_len, const char *data, uint32_t length) {
-    os_printf("Received: \"%s\" len: %d\r\n", topic, length);
+    os_printf("Received: \"%s\" len: %d data: \"%s\" \r\n", topic, length, data);
 }
 
 LOCAL bool ICACHE_FLASH_ATTR  mqttConnectCB(struct espconn *pesp_conn, uint16_t client_count) {
@@ -44,5 +44,7 @@ void mqttBrokerInit(void){
     MQTT_server_onAuth(mqttAuthCB);
 
     MQTT_server_start(1883, 30, 30);
+
+    MQTT_local_subscribe("hello/world", 0);
 }
 
