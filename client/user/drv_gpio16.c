@@ -22,14 +22,6 @@
  *
  */
 
-/**
- * @file    drv_gpio16.c
- * @brief   GPIO 16 Driver code.
- *
- * @addtogroup Indicator
- * @{
- */
-
 #include "ets_sys.h"
 #include "osapi.h"
 #include "driver/gpio16.h"
@@ -84,4 +76,4 @@ gpio16_input_get(void)
 {
     return (uint8)(READ_PERI_REG(RTC_GPIO_IN_DATA) & 1);
 }
-/** @} */
+

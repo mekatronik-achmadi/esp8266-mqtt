@@ -22,14 +22,6 @@
  *
  */
 
-/**
- * @file    drv_uart.c
- * @brief   GPIO 16 Driver code.
- *
- * @addtogroup Indicator
- * @{
- */
-
 #include "ets_sys.h"
 #include "osapi.h"
 #include "driver/uart.h"
@@ -302,23 +294,14 @@ uart_response(uint8 inChar){
                 system_restart();
             }           
             else if(os_strcmp("sysinfo",strReq)==0){
-                os_printf("\r\n\r\n[INFO] -------------------------------------------\r\n");
-
+                os_printf("\r\n\[INFO] -------------------------------------------\r\n");
                 os_printf("[INFO] Compiled at %s %s\r\n", __DATE__,__TIME__);
                 os_printf("[INFO] SDK: %s\r\n", system_get_sdk_version());
                 os_printf("[INFO] Chip ID: %08X\r\n", system_get_chip_id());
-                os_printf("[INFO] BOOT Version: %d\r\n",system_get_boot_version());
-                os_printf("[INFO] BIN User addr: 0x%08X\r\n",system_get_userbin_addr());
-
-                bootmode = system_get_boot_mode();
-                if(bootmode == 0){ os_printf("[INFO] Boot using Enhance Mode\r\n"); }
-                else{os_printf("[INFO] Boot using Normal Mode\r\n");}
-
                 os_printf("[INFO] CPU Freq: %d MHz\r\n", system_get_cpu_freq());
                 os_printf("[INFO] Memory Info:\r\n"); system_print_meminfo();
-
                 os_printf("[INFO] -------------------------------------------\r\n");
-                os_printf("\r\n\r\n");
+                os_printf("\r\n");
             }
             else if(os_strcmp("help",strReq)==0){
                 os_printf("%s\r\n",cmdlist);
@@ -418,4 +401,4 @@ void uart_rx_intr_enable(uint8 uart_no)
 {
     SET_PERI_REG_MASK(UART_INT_ENA(uart_no), UART_RXFIFO_FULL_INT_ENA|UART_RXFIFO_TOUT_INT_ENA);
 }
-/** @} */
+

@@ -1,5 +1,5 @@
-#include "ets_sys.h"
 #include "osapi.h"
+#include "ets_sys.h"
 #include "gpio.h"
 #include "os_type.h"
 
@@ -10,6 +10,7 @@
 
 #include "drv_gpio16.h"
 #include "drv_uart.h"
+#include "wifi_sta.h"
 
 LOCAL os_timer_t blink_timer;
 LOCAL uint8 blink_led;
@@ -35,6 +36,8 @@ void ICACHE_FLASH_ATTR user_init(){
     uart_init(SERIALBAUD,SERIALBAUD);
     uart_rx_intr_enable(UART0);
     print_info();
+
+    user_wifi_station_init();
     
     gpio16_output_conf();
     os_timer_setfn(&blink_timer,(os_timer_func_t*)blink_timer_cb,NULL);
