@@ -1,6 +1,8 @@
 #ifndef _USER_CONF_
 #define _USER_CONF_
 
+#define MQTT_DEBUG_ON
+
 #define SERIALBAUD  9600
 
 #define WIFI_SSID   "CobaMQTT"

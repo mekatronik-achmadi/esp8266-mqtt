@@ -224,7 +224,7 @@ bool ICACHE_FLASH_ATTR MQTT_server_deleteClientCon(MQTT_ClientCon * mqttClientCo
 		}
 		os_free(mqttClientCon->connect_info.client_id);
 	}
-	
+
 	mqttClientCon->connect_info.client_id = NULL;
     }
 
@@ -449,7 +449,7 @@ static void ICACHE_FLASH_ATTR MQTT_ClientCon_recv_cb(void *arg, char *pdata, uns
 		    break;
 		}
 		os_memcpy(new_id, client_id, id_len);
-		new_id[id_len] = '\0';		
+		new_id[id_len] = '\0';
 
 		// Delete any existing status for that id
 		delete_client_by_id(client_id);
@@ -589,7 +589,7 @@ static void ICACHE_FLASH_ATTR MQTT_ClientCon_recv_cb(void *arg, char *pdata, uns
 	    }
 
 	    // Check Auth
-	    if ((local_auth_cb != NULL) && 
+	    if ((local_auth_cb != NULL) &&
 		local_auth_cb(clientcon->connect_info.username==NULL?"":clientcon->connect_info.username,
 			      clientcon->connect_info.password==NULL?"":clientcon->connect_info.password,
 				  clientcon->connect_info.client_id,
@@ -630,7 +630,7 @@ static void ICACHE_FLASH_ATTR MQTT_ClientCon_recv_cb(void *arg, char *pdata, uns
 
 	case MQTT_MSG_TYPE_SUBSCRIBE:
 	    MQTT_INFO("MQTT: Subscribe received, message_len: %d\r\n", clientcon->mqtt_state.message_length);
-	    // 2B fixed header + 2B variable header + 2 len + 1 char + 1 QoS 
+	    // 2B fixed header + 2B variable header + 2 len + 1 char + 1 QoS
 	    if (clientcon->mqtt_state.message_length < 8) {
 		MQTT_ERROR("MQTT: Too short Subscribe message\r\n");
 		MQTT_server_disconnectClientCon(clientcon);
@@ -682,7 +682,7 @@ static void ICACHE_FLASH_ATTR MQTT_ClientCon_recv_cb(void *arg, char *pdata, uns
 
 	case MQTT_MSG_TYPE_UNSUBSCRIBE:
 	    MQTT_INFO("MQTT: Unsubscribe received, message_len: %d\r\n", clientcon->mqtt_state.message_length);
-	    // 2B fixed header + 2B variable header + 2 len + 1 char 
+	    // 2B fixed header + 2B variable header + 2 len + 1 char
 	    if (clientcon->mqtt_state.message_length < 7) {
 		MQTT_ERROR("MQTT: Too short Unsubscribe message\r\n");
 		MQTT_server_disconnectClientCon(clientcon);
