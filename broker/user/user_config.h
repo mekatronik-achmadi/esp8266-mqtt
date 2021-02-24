@@ -6,6 +6,6 @@
 #define WIFI_SSID   "CobaMQTT"
 #define WIFI_PASS   "cobamqtt"
 
-#define MQTT_BROKER "192.168.43.185"
+#define MQTT_BROKER "192.168.43.95"
 
 #endif

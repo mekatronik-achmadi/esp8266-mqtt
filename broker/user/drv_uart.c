@@ -30,11 +30,9 @@
 #include "os_type.h"
 #include "user_interface.h"
 
-#include "mqtt.h"
 #include "user_config.h"
 
 extern UartDevice UartDev;
-extern MQTT_Client mqttClient;
 
 /**
  * @brief UART receive buffer size
@@ -258,7 +256,6 @@ uart_response(uint8 inChar){
             "sleep "\
             "restart "\
             "sysinfo "\
-            "pub " \
             "help";
 
     if(inChar == '\n' || inChar == '\r'){
@@ -305,9 +302,6 @@ uart_response(uint8 inChar){
                 os_printf("[INFO] Memory Info:\r\n"); system_print_meminfo();
                 os_printf("[INFO] -------------------------------------------\r\n");
                 os_printf("\r\n");
-            }
-            else if(os_strcmp("pub",strReq)==0){
-                MQTT_Publish(&mqttClient, "hello/world", "hello_esp8266", 13, 0, 0);
             }
             else if(os_strcmp("help",strReq)==0){
                 os_printf("%s\r\n",cmdlist);

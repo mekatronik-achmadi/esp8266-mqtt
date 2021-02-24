@@ -2,3 +2,7 @@
 /client/compile_commands.json
 /client/firmware
 /client/build
+/broker/.clangd
+/broker/compile_commands.json
+/broker/firmware
+/broker/build
