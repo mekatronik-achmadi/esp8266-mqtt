@@ -8,4 +8,6 @@
 
 #define MQTT_BROKER "192.168.43.185"
 
+#define LOG_TLS     FALSE
+
 #endif

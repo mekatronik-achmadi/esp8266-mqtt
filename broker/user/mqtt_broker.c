@@ -20,13 +20,17 @@ LOCAL bool ICACHE_FLASH_ATTR  mqttConnectCB(struct espconn *pesp_conn, uint16_t 
     return true;
 }
 
+LOCAL bool ICACHE_FLASH_ATTR mqttDisconnCB(struct espconn *pesp_conn, const char* client_id){
+    return true;
+}
+
 LOCAL bool ICACHE_FLASH_ATTR mqttAuthCB(const char* username, const char *password, const char *client_id, struct espconn *pesp_conn) {
-    
+
     /*if (os_strcmp(username, "username") != 0 || os_strcmp(password, "password") != 0) {
     	os_printf("Authentication with %s/%s failed\r\n", username, password);
 	    return false;
     }*/
-  
+
     return true;
 }
 
@@ -36,6 +40,7 @@ void mqttBrokerInit(void){
 
     MQTT_server_onData(mqttDataCB);
     MQTT_server_onConnect(mqttConnectCB);
+    MQTT_server_onDisconnect(mqttDisconnCB);
     MQTT_server_onAuth(mqttAuthCB);
 
     MQTT_server_start(1883, 30, 30);
